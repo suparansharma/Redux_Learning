@@ -4,6 +4,7 @@ import { getAllTodos } from '../services/actions/todosActions';
 
 const Todos = () => {
     const {isLoading,todos,error} = useSelector((state)=>state);
+    // const todos = useSelector((state)=>console.log(state););
     const dispatch = useDispatch(); 
     useEffect(()=>{
         dispatch(getAllTodos())

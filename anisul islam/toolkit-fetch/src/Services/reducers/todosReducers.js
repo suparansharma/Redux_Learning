@@ -1,35 +1,37 @@
-import { GET_TODOS_FAILED,GET_TODOS_REQUEST,GET_TODOS_SUCCESS } from "../constants/todosConstant";
+import { GET_ERROR, GET_REQUEST, GET_SUCCESS } from "../constants/actionConstants";
 
-const isitialState = {
+const intialState = {
     isLoading: false,
     todos: [],
     error: null
 }
 
 
-const todosReducers = (state = isitialState, action) => {
+const todoReducers = (state = intialState, action) => {
+
     switch (action.type) {
-        case GET_TODOS_REQUEST:
+        case GET_REQUEST:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
             }
 
-
-        case GET_TODOS_SUCCESS:
+        case GET_SUCCESS:
             return {
                 isLoading: false,
                 todos: action.payload,
                 error: null
+
             }
 
-        case GET_TODOS_FAILED:
+
+        case GET_ERROR:
             return {
                 isLoading: false,
                 todos: [],
                 error: action.payload
-            }
 
+            }
 
         default:
             return state;
@@ -37,4 +39,5 @@ const todosReducers = (state = isitialState, action) => {
 }
 
 
-export default todosReducers;
+
+export default todoReducers;
